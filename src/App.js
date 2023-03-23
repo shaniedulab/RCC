@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+// import Refsdemo from './Components/ReafDemo';
+// import Components1 from './Components/Components1';
+// import PortelComponents from './Components/PortelCpmponents';
+import Demo from './ReducerDemo/Demo';
+import AuthContext from './Context/AuthContext';
 
 function App() {
+  let[setb,updateb]=useState('manish')
+  console.log("app",setb);
+  function clicklog(){
+    console.log("clicklog")
+  }
+  function updatelog(){
+    updateb("vish")
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+    <button onClick={updatelog}></button>
+      {/* <Refsdemo></Refsdemo> */}
+      {/* <Components1></Components1> */}
+      {/* <PortelComponents></PortelComponents> */}
+      <AuthContext.Provider value={{isLogin:setb,isLogout:clicklog}}>
+        <Demo></Demo>
+      </AuthContext.Provider>
+    </React.Fragment> 
   );
 }
 
